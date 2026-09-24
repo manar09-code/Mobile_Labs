@@ -19,33 +19,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
-        '/notes': (context) => const NotesScreen(),
+        '/': (context) => HomeScreen(),
+        '/notes': (context) => NotesScreen(),
       },
-    );
-  }
-}
-
-// lib/screens/home_screen.dart
-import 'package:flutter/material.dart';
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notes App'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/notes');
-          },
-          child: const Text('Go to Notes'),
-        ),
-      ),
     );
   }
 }
