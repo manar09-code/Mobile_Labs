@@ -1,0 +1,20 @@
+# Dependencies and generated output
+**/node_modules/
+**/.expo/
+**/.dart_tool/
+**/build/
+**/.gradle/
+**/coverage/
+
+# Local environment and signing files
+**/.env
+**/.env.*
+**/*.jks
+**/*.keystore
+**/*.pem
+**/*.p12
+**/*.key
+
+# Operating system files
+.DS_Store
+Thumbs.db
