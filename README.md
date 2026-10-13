@@ -29,3 +29,15 @@ cd Lab1_Part1/notes_app
 flutter pub get
 flutter run
 ```
+
+## Part 2: Notes app with Appwrite
+
+The [`Lab1_Part 2`](./Lab1_Part%202/) folder contains the same Notes app with
+persistent Appwrite storage:
+
+- **Expo / React Native** — [`notes-app`](./Lab1_Part%202/notes-app/)
+- **Flutter** — [`notes_app`](./Lab1_Part%202/notes_app/)
+
+Both versions load notes from Appwrite and support creating, updating, and
+deleting notes. Configure your own Appwrite project using the example
+environment files in each app before running it.
