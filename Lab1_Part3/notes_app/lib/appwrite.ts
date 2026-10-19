@@ -1,0 +1,40 @@
+// src/lib/appwrite.ts
+// @ts-ignore -- the package's auto entry point has no TypeScript declarations.
+import 'react-native-url-polyfill/auto';
+// @ts-ignore -- the package may not expose TypeScript declarations in this setup.
+import { Account, Client, TablesDB } from 'react-native-appwrite';
+
+declare const process: {
+  env: {
+    EXPO_PUBLIC_APPWRITE_ENDPOINT?: string;
+    EXPO_PUBLIC_APPWRITE_PROJECT_ID?: string;
+    EXPO_PUBLIC_APPWRITE_PLATFORM?: string;
+    EXPO_PUBLIC_APPWRITE_DATABASE_ID?: string;
+    EXPO_PUBLIC_APPWRITE_TABLE_ID?: string;
+  };
+};
+
+// Expo inlines every process.env.EXPO_PUBLIC_* it finds at build time.
+// The access must be written literally (no destructuring, no dynamic key).
+function required(value: string | undefined, name: string): string {
+  if (!value) {
+    throw new Error(`Missing environment variable ${name}. Check your .env file and restart Expo.`);
+  }
+  return value;
+}
+
+export const config = {
+  endpoint: required(process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT, 'EXPO_PUBLIC_APPWRITE_ENDPOINT'),
+  projectId: required(process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID, 'EXPO_PUBLIC_APPWRITE_PROJECT_ID'),
+  platform: required(process.env.EXPO_PUBLIC_APPWRITE_PLATFORM, 'EXPO_PUBLIC_APPWRITE_PLATFORM'),
+  databaseId: required(process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID, 'EXPO_PUBLIC_APPWRITE_DATABASE_ID'),
+  tableId: required(process.env.EXPO_PUBLIC_APPWRITE_TABLE_ID, 'EXPO_PUBLIC_APPWRITE_TABLE_ID'),
+};
+
+export const client = new Client()
+  .setEndpoint(config.endpoint)
+  .setProject(config.projectId)
+  .setPlatform(config.platform);
+
+export const tablesDB = new TablesDB(client);
+export const account = new Account(client);
